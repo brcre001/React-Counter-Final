@@ -9,7 +9,7 @@ import "bootstrap";
 import "../styles/index.scss";
 
 //import your own components
-import { SecondsCounter } from "./component/SecondsCounter.js";
+import { App } from "./component/App.js";
 
 //render your react application
 
@@ -26,13 +26,13 @@ setInterval(() => {
 	//render your react application inside the set interval
 
 	ReactDOM.render(
-		<SecondsCounter
-			digitOne={one}
-			digitTwo={two}
-			digitThree={three}
-			digitFour={four}
-			digitFive={five}
-			digitSix={six}
+		<App
+			placeOne={one}
+			placeTwo={two}
+			placeThree={three}
+			placeFour={four}
+			placeFive={five}
+			placeSix={six}
 		/>,
 		document.querySelector("#app")
 	);

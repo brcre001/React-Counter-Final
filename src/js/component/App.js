@@ -11,7 +11,7 @@ export const App = () => {
 			setCount(prevCount => prevCount + 1);
 		}, 1000);
 		return () => clearInterval(interval);
-	}, []);
+	}, [count]);
 
 	// Setting variables for each position on the timer
 	let one = Math.floor(count / 1);

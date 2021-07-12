@@ -5,6 +5,9 @@ export const App = () => {
 	// Using setState for counter variable
 	const [count, setCount] = useState(0);
 	const [pause, setPause] = useState(false);
+	const [countdown, setCountdown] = useState("");
+	const [alert, setAlert] = useState("");
+	const [showAlert, setShowAlert] = useState(false);
 
 	// Using useEffect to increase value after each time it is loaded
 	useEffect(() => {
@@ -12,6 +15,11 @@ export const App = () => {
 			const interval = setInterval(() => {
 				setCount(prevCount => prevCount + 1);
 			}, 1000);
+
+			if (count == parseInt(alert)) {
+				setShowAlert(true);
+				setPause(true);
+			}
 
 			return () => clearInterval(interval);
 		}
@@ -29,6 +37,8 @@ export const App = () => {
 	let reset = () => {
 		setCount(0);
 	};
+
+	//
 
 	return (
 		<div className="text-center">
@@ -56,6 +66,38 @@ export const App = () => {
 					Start Countdown
 				</button>
 			</div>
+			<div>
+				<input
+					type="text"
+					onChange={event => setAlert(event.target.value)}
+					value={alert}
+					placeholder="Pick a number to show an alert"
+					className="w-25"
+				/>{" "}
+				&nbsp;
+			</div>
+			{showAlert ? (
+				<div className="card mx-auto" style={{ width: "18rem" }}>
+					<div className="card-body">
+						<h5 className="card-title">Alert</h5>
+						<p className="card-text">
+							You have reached your target number of: {alert}
+						</p>
+						<a
+							href="#"
+							className="btn btn-primary"
+							onClick={() => {
+								setShowAlert(false);
+								setAlert("");
+								setPause(false);
+							}}>
+							Close
+						</a>
+					</div>
+				</div>
+			) : (
+				""
+			)}
 		</div>
 	);
 };

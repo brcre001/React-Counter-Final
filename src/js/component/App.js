@@ -57,10 +57,8 @@ export const App = () => {
 		setCount(0);
 	};
 
-	//
-
 	return (
-		<div className="text-center">
+		<div className="text-center mt-2">
 			<SecondsCounter
 				digitOne={one}
 				digitTwo={two}
@@ -73,7 +71,7 @@ export const App = () => {
 				<button
 					onClick={() => setPause(!pause)}
 					className="btn-dark rounded m-2">
-					Start/Stop
+					{pause ? "Start" : "Stop"}
 				</button>
 				<button onClick={reset} className="btn-dark rounded m-2">
 					Reset
@@ -82,6 +80,8 @@ export const App = () => {
 			<div>
 				<input
 					type="text"
+					placeholder="Pick a number for the countdown"
+					className="w-25"
 					onChange={event => setCountdown(event.target.value)}
 				/>{" "}
 				&nbsp;
@@ -105,7 +105,7 @@ export const App = () => {
 				&nbsp;
 			</div>
 			{showAlert ? (
-				<div className="card mx-auto" style={{ width: "18rem" }}>
+				<div className="card mx-auto mt-2" style={{ width: "18rem" }}>
 					<div className="card-body">
 						<h5 className="card-title">Alert</h5>
 						<p className="card-text">

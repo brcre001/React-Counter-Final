@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export const SecondsCounter = props => {
 	return (
-		<div className="container">
+		<div className="container rounded">
 			<div className="box">
 				<i className="far fa-clock"></i>
 			</div>

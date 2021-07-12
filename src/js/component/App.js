@@ -90,6 +90,7 @@ export const App = () => {
 					onClick={() => {
 						setStartCountdown(true);
 						setCount(parseInt(countdown));
+						setPause(false);
 					}}>
 					Start Countdown
 				</button>

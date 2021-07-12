@@ -6,22 +6,41 @@ export const App = () => {
 	const [count, setCount] = useState(0);
 	const [pause, setPause] = useState(false);
 	const [countdown, setCountdown] = useState("");
+	const [startCountdown, setStartCountdown] = useState(false);
 	const [alert, setAlert] = useState("");
 	const [showAlert, setShowAlert] = useState(false);
 
 	// Using useEffect to increase value after each time it is loaded
 	useEffect(() => {
 		if (!pause) {
-			const interval = setInterval(() => {
-				setCount(prevCount => prevCount + 1);
-			}, 1000);
+			if (startCountdown) {
+				if (count > 0) {
+					let interval = setInterval(() => {
+						setCount(prevCount => prevCount - 1);
+					}, 1000);
 
-			if (count == parseInt(alert)) {
-				setShowAlert(true);
-				setPause(true);
+					if (count == parseInt(alert)) {
+						setShowAlert(true);
+						setPause(true);
+					}
+
+					return () => clearInterval(interval);
+				} else {
+					setStartCountdown(false);
+					setPause(true);
+				}
+			} else {
+				let interval = setInterval(() => {
+					setCount(prevCount => prevCount + 1);
+				}, 1000);
+
+				if (count == parseInt(alert)) {
+					setShowAlert(true);
+					setPause(true);
+				}
+
+				return () => clearInterval(interval);
 			}
-
-			return () => clearInterval(interval);
 		}
 	}, [count, pause]);
 
@@ -61,8 +80,17 @@ export const App = () => {
 				</button>
 			</div>
 			<div>
-				<input type="text" /> &nbsp;
-				<button className="btn-dark rounded m-2">
+				<input
+					type="text"
+					onChange={event => setCountdown(event.target.value)}
+				/>{" "}
+				&nbsp;
+				<button
+					className="btn-dark rounded m-2"
+					onClick={() => {
+						setStartCountdown(true);
+						setCount(parseInt(countdown));
+					}}>
 					Start Countdown
 				</button>
 			</div>

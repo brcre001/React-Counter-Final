@@ -70,10 +70,10 @@ export const App = () => {
 			<div>
 				<button
 					onClick={() => setPause(!pause)}
-					className="btn-dark rounded m-2">
+					className="btn btn-warning rounded m-2">
 					{pause ? "Start" : "Stop"}
 				</button>
-				<button onClick={reset} className="btn-dark rounded m-2">
+				<button onClick={reset} className="btn btn-warning rounded m-2">
 					Reset
 				</button>
 			</div>
@@ -86,7 +86,7 @@ export const App = () => {
 				/>{" "}
 				&nbsp;
 				<button
-					className="btn-dark rounded m-2"
+					className="btn btn-warning rounded m-2"
 					onClick={() => {
 						setStartCountdown(true);
 						setCount(parseInt(countdown));
@@ -114,7 +114,7 @@ export const App = () => {
 						</p>
 						<a
 							href="#"
-							className="btn btn-primary"
+							className="btn btn-warning"
 							onClick={() => {
 								setShowAlert(false);
 								setAlert("");

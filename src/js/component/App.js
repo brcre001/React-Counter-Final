@@ -68,29 +68,39 @@ export const App = () => {
 				digitSix={six}
 			/>
 			<div>
+				{/* START AND STOP BUTTON */}
 				<button
 					onClick={() => setPause(!pause)}
 					className="btn btn-warning rounded m-2">
 					{pause ? "Start" : "Stop"}
 				</button>
+
+				{/* RESET BUTTON */}
 				<button onClick={reset} className="btn btn-warning rounded m-2">
 					Reset
 				</button>
 			</div>
+
 			<div>
+				{/* COUNTDOWN INPUT */}
 				<input
 					type="text"
 					placeholder="Pick a number for the countdown"
 					className="w-25"
-					onChange={event => setCountdown(event.target.value)}
+					value={countdown}
+					onChange={event => {
+						setCountdown(event.target.value);
+					}}
 				/>{" "}
 				&nbsp;
+				{/* COUNTDOWN BUTTON */}
 				<button
 					className="btn btn-warning rounded m-2"
 					onClick={() => {
 						setStartCountdown(true);
 						setCount(parseInt(countdown));
 						setPause(false);
+						setCountdown("");
 					}}>
 					Start Countdown
 				</button>
